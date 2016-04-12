@@ -14,7 +14,7 @@ describe('CustomersCtrl', function(){
   afterEach(function(){
     $httpBackend.verifyNoOutstandingRequest();
     $httpBackend.verifyNoOutstandingExpectation();
-  
+
   });
 
   describe('no customers', function(){
@@ -74,7 +74,7 @@ describe('CustomersCtrl', function(){
     });
   });
 
-  describe('deleting a customer', function(){
+  xdescribe('deleting a customer', function(){
     it('calls the delete factory method and reloads data', function(){
       var $scope = $rootScope.$new();
 

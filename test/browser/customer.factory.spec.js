@@ -9,7 +9,7 @@ describe('CustomerFactory', function(){
   afterEach(function(){
     $httpBackend.verifyNoOutstandingRequest();
     $httpBackend.verifyNoOutstandingExpectation();
-  
+
   });
 
   describe('fetchAll', function(){
@@ -18,7 +18,7 @@ describe('CustomerFactory', function(){
           { name: 'Moe' },
           { name: 'Larry' },
           { name: 'Curly' },
-      
+
       ]);
       $httpBackend.expect('GET', '/api/customers');
       CustomerFactory.fetchAll()
@@ -35,7 +35,7 @@ describe('CustomerFactory', function(){
           { name: 'Moe' }
       );
       $httpBackend.expect('GET', '/api/customers/3');
-      
+
       CustomerFactory.fetchById(3)
         .then(function(customer){
           expect(customer.name).toEqual('Moe');
@@ -50,7 +50,7 @@ describe('CustomerFactory', function(){
           { name: 'Curly' }
       );
       $httpBackend.expect('PUT', '/api/customers/3');
-      
+
       CustomerFactory.update(3, { name: 'Curly'})
         .then(function(customer){
           expect(customer.name).toEqual('Curly');
@@ -65,7 +65,7 @@ describe('CustomerFactory', function(){
           { name: 'Shep' }
       );
       $httpBackend.expect('POST', '/api/customers');
-      
+
       CustomerFactory.create({ name: 'Shep'})
         .then(function(customer){
           expect(customer.name).toEqual('Shep');
@@ -77,7 +77,7 @@ describe('CustomerFactory', function(){
     it('calls delete', function(){
       $httpBackend.when('DELETE', '/api/customers/3').respond(201, '');
       $httpBackend.expect('DELETE', '/api/customers/3');
-      
+
       CustomerFactory._delete({ id: 3, name: 'Curly'})
         .then(function(data){
           expect(data).toEqual('');
