@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('CustomersCtrl', function($scope, CustomerFactory){
+.controller('CustomersCtrl', function($scope, CustomerFactory, $state){
   $scope.customers = [];
   $scope.message = 'There are no customers';
 
@@ -10,7 +10,15 @@ angular.module('app')
     }
   });
 
-  $scope.insert = function(customer){
-    CustomerFactory.create(customer);
+  $scope.insert = function(){
+    return CustomerFactory.create($scope.newCustomer).then(function(cust){
+      $state.go('customer', {id: cust.id});
+    });
+  };
+
+  $scope._delete = function(customer){
+    return CustomerFactory._delete(customer).then(function(){
+      return CustomerFactory.fetchAll();
+    });
   };
 });

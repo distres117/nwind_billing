@@ -74,7 +74,7 @@ describe('CustomersCtrl', function(){
     });
   });
 
-  xdescribe('deleting a customer', function(){
+  describe('deleting a customer', function(){
     it('calls the delete factory method and reloads data', function(){
       var $scope = $rootScope.$new();
 
